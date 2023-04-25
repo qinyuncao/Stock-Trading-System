@@ -83,10 +83,6 @@ class frontEnd:
         return
     
 
-    # lab3从这里开始！！！！！！！！！
-
-
-
 
 if __name__ == '__main__':
     front_end = frontEnd()

@@ -2,7 +2,6 @@ from threading import Lock
 
 lock = Lock()
 
-# chatgpt基础
 class SimpleCache:
     def __init__(self):
         self.cache = {}
@@ -18,13 +17,12 @@ class SimpleCache:
             else:
                 return False
 
-    def set(self, key, value):
+    def add(self, name, price, quantity):
         while lock:
-            self.cache[key] = value
+            self.cache.update({name: {"price": price, "quantity": quantity}})
 
     def delete(self, key):
         while lock:
             if key in self.cache:
                 del self.cache[key]
 
-cache_instance = SimpleCache()
