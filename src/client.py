@@ -34,7 +34,7 @@ class Client:
                 tradeType = "buy"
             else:
                 tradeType = "sell"
-            r2 = self.session.post('http://%s:6060/' % self.frontAddr,
+            r2 = self.session.post('http://%s:6060/order/' % self.frontAddr,
                                    data={'stockName': stockName, 'quantity': randomBuy, 'type': tradeType})
             print(r2.json())
 

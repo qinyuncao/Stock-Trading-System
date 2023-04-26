@@ -1,11 +1,11 @@
 {
     "GameStart": {
         "price": 15.99,
-        "quantity": 100
+        "quantity": 490
     },
     "FishCo": {
         "price": 10.98,
-        "quantity": 100
+        "quantity": 600
     },
     "BoarCo": {
         "price": 21.77,

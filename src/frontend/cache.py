@@ -2,6 +2,7 @@ from threading import Lock
 
 lock = Lock()
 
+
 class SimpleCache:
     def __init__(self):
         self.cache = {}
@@ -9,7 +10,7 @@ class SimpleCache:
     def get(self, key):
         while lock:
             return self.cache.get(key, None)
-    
+
     def inCache(self, key):
         while lock:
             if self.cache.get(key):
@@ -25,4 +26,3 @@ class SimpleCache:
         while lock:
             if key in self.cache:
                 del self.cache[key]
-
