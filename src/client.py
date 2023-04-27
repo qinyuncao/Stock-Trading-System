@@ -25,9 +25,7 @@ class Client:
 
         r = requests.get(url=self.url + self.stockName[random.randint(0, 3)]).json()  # send request to front end
         reply = json.loads(r)
-        print(reply)
         stockName, quantity = reply['data']['stockName'], reply['data']['quantity']
-
         # If stock has more than 0 and probability is less than p
         if quantity > 0 and random.random() < self.p:
             randomBuy = random.randint(1, 1000)
@@ -35,8 +33,14 @@ class Client:
                 tradeType = "buy"
             else:
                 tradeType = "sell"
-            r2 = self.session.post('http://%s:6060/order/' % self.frontAddr,
-                                   data={'stockName': stockName, 'quantity': randomBuy, 'type': tradeType})
+            headers = {
+                "Content-Type": "application/json"
+            }
+            data = json.dumps({'stockName': stockName, 'quantity': randomBuy, 'type': tradeType})
+            print(type(data))
+            print(data)
+            r2 = requests.post('http://%s:6060/order' % self.frontAddr,
+                               json=data, headers=headers)
             print(r2.json())
 
 
