@@ -16,10 +16,10 @@ cSAddr = (os.getenv("PG_HostC", "127.0.0.1"), 7090)
 
 class frontEnd:
     def __init__(self, *args, **kwargs):
-        self.cache = SimpleCache()
+        self.cache = SimpleCache(3)
         pass
 
-    @app.route('/lookup', method=['GET'])
+    @app.route('/lookup', methods=['GET'])
     def get_request(self):
         stockName = request.args.get('stockName')
         print(stockName)
@@ -55,7 +55,7 @@ class frontEnd:
                 reply = json.dumps(res_msg)
                 return reply
 
-    @app.route('/order', method=['POST'])
+    @app.route('/order', methods=['POST'])
     def post_request(self):
         data = request.data
         data = eval(str(data, 'utf-8'))
