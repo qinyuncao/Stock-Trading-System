@@ -28,8 +28,9 @@ def get_request():
 
     # check cache first
     if cache.inCache(stockName):
-        stock_in_cache = cache.getStock(stockName)
+        stock_in_cache = json.loads(cache.getStock(stockName))
         price, quantity = stock_in_cache['price'], stock_in_cache['quantity']
+        print(price)
         payload = json.dumps(
             {
                 "data": {
@@ -40,7 +41,7 @@ def get_request():
             }
         )
 
-        payload = json.dumps(payload.encode())
+        payload = json.dumps(payload)
         return payload
     else:
         # connect with catalog service
@@ -142,7 +143,7 @@ def leader_election():
                 alive_port.append(p)
             s.close()
         except:
-            print(f"Could not connect to server {order_Addr_list[i]}")
+            print(f"Could not connect to server {p}")
             s.close()
             continue
 

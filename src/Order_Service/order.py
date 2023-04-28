@@ -133,9 +133,10 @@ if __name__ == '__main__':
                 for line in reversed(lines):
                     if int(line.split(' ')[0]) > 0:
                         counts[i] = int(line.split(' ')[0])
+                        break
         else:
             counts[i] = 0
-
+        print(counts)
         server_thread = Thread(target=start_server, args=(port,))
         server_thread.start()
         server_threads.append(server_thread)
