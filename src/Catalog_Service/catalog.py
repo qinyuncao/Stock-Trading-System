@@ -49,7 +49,7 @@ class CatalogService:
             c.send(reply_msg.encode('utf-8'))
         c.close()
 
-    # Received request from Order_Service(Backup)
+    # Received request from Order_Service
     # i) check if the trade can be made
     # ii) update the database 
     def Update(self, c, request):
@@ -98,7 +98,7 @@ class CatalogService:
         # Handle request from Front End
         if action == 'Lookup':
             self.Lookup(c, request)
-        # Handle request from Order_Service(Backup)
+        # Handle request from Order_Service
         else:
             self.Update(c, request)
         return
