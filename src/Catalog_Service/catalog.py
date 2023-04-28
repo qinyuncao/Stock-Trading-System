@@ -11,7 +11,8 @@ class CatalogService:
     def __init__(self, *args, **kwargs):
         self.memory = json.load(open('database.json'))
 
-    # Based on the request send by front end, check if the database have the stock. If yes, return it. If not, return 404.
+    # Based on the request send by front end, check if the database have the stock. If yes, return it. If not,
+    # return 404.
     def Lookup(self, c, request):
         # request message from front end is 'Lookup {stock_name}'
         stock_name = request.split()[1]

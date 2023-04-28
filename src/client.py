@@ -24,8 +24,10 @@ class Client:
     def lookUpAndOrder(self):
 
         r = requests.get(url=self.url + self.stockName[random.randint(0, 3)]).json()  # send request to front end
+        print(r)
         reply = json.loads(r)
         stockName, quantity = reply['data']['stockName'], reply['data']['quantity']
+
         # If stock has more than 0 and probability is less than p
         if quantity > 0 and random.random() < self.p:
             randomBuy = random.randint(1, 1000)

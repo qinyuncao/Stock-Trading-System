@@ -10,7 +10,7 @@ app = Flask(__name__)
 fAddr = frontEndService_addr
 oAddr = orderService_addr
 cAddr = catalogService_addr
-oSAddr = (os.getenv("PG_HostO", "127.0.0.1"), 9090)
+oSAddr = (os.getenv("PG_HostO", "127.0.0.1"), 6001)
 cSAddr = (os.getenv("PG_HostC", "127.0.0.1"), 7090)
 cache = SimpleCache(3)
 
