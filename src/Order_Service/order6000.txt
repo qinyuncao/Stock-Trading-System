@@ -1,0 +1,10 @@
+1 stockName:GameStart,tradeType:sell,quantity:374
+2 stockName:Gogle,tradeType:sell,quantity:203
+3 stockName:FishCo,tradeType:sell,quantity:707
+2 stockName:Azon,tradeType:sell,quantity:789
+2 stockName:GameStart,tradeType:buy,quantity:700
+3 stockName:Tela,tradeType:buy,quantity:515
+4 stockName:FishCo,tradeType:buy,quantity:947
+5 stockName:Azon,tradeType:buy,quantity:28
+6 stockName:FishCo,tradeType:buy,quantity:615
+2 stockName:Tela,tradeType:buy,quantity:30

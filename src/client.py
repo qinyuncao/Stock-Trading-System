@@ -23,7 +23,7 @@ class Client:
     # Look up then buy random number of stock
     def lookUpAndOrder(self):
 
-        r = requests.get(url=self.url + self.stockName[random.randint(0, 3)]).json()  # send request to front end
+        r = requests.get(url=self.url + self.stockName[random.randint(0, 9)]).json()  # send request to front end
         print(r)
         reply = json.loads(r)
         stockName, quantity = reply['data']['stockName'], reply['data']['quantity']
@@ -48,8 +48,8 @@ class Client:
 
 if __name__ == '__main__':
     FRONTADDRESS = "127.0.0.1"
-    stocks = ["GameStart", "FishCo", "BoarCo", "MenhirCo"]
+    stocks = ["GameStart", "FishCo", "BoarCo", "MenhirCo", "Gogle", "Mata", "Azon", "Tela", "FAANG", "Appl"]
     url = 'http://%s:6060/lookUp?stockName=' % FRONTADDRESS
-    p = 0.5
+    p = 1
     client = Client(p, stocks, url, FRONTADDRESS)
     client.run()
