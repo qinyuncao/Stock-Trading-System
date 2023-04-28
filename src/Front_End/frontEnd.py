@@ -126,7 +126,8 @@ def post_request():
         # health_reponse = 'alive {order_port}'
         status = health_response.split("/")[0]
         port = health_response.split("/")[1]
-        alive_port.append(port)
+        if status == 'alive':
+            alive_port.append(port)
         s.close()
 
     # Elect leader with the highest port number
