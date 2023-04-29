@@ -2,4 +2,3 @@
 2 stockName:Azon,tradeType:buy,quantity:145
 3 stockName:FishCo,tradeType:buy,quantity:68
 4 stockName:MenhirCo,tradeType:buy,quantity:86
-5 stockName:Azon,tradeType:buy,quantity:97

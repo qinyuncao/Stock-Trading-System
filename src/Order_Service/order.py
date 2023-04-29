@@ -12,7 +12,7 @@ lock = Lock()
 # count1 = -1
 # count2 = -1
 # count3 = -1
-ports = [6000, 6001, 6002]
+ports = [6000, 6001, 6002]  # The order service ID
 counts = [0, 0, 0]
 
 
@@ -104,21 +104,6 @@ def handle_client(client_socket, port):
     return
 
 
-def start_server(port):
-    # create a socket object
-    server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    # bind the socket to a specific address and port
-    server_socket.bind(('localhost', port))
-    # listen for incoming connections
-    server_socket.listen(1)
-
-    # accept incoming connections and handle them in separate threads
-    while True:
-        client_socket, address = server_socket.accept()
-        client_thread = Thread(target=handle_client, args=(client_socket, port))
-        client_thread.start()
-
-
 def syncronization():
     # When order server starts, we synchronize their own database file with the latest one
     # The latest database file contains the most data
@@ -128,12 +113,27 @@ def syncronization():
         with open(file, 'r') as f:
             lines = f.readlines()
         lines_len.append(len(lines))
-    # Ge the index of the latest file
+    # Get the index of the latest file
     i = lines_len.index(max(lines_len))
     for j in range(len(file_list)):
         if j != i:
             open(file_list[j], 'w').close()
-            shutil.copy(file_list[i], dest_file)
+            shutil.copy(file_list[i], file_list[j])
+
+
+def start_server(port):
+    # create a socket object
+    server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    # bind the socket to a specific address and port
+    server_socket.bind(('localhost', port))
+    # listen for incoming connections
+    server_socket.listen(1)
+    syncronization()
+    # accept incoming connections and handle them in separate threads
+    while True:
+        client_socket, address = server_socket.accept()
+        client_thread = Thread(target=handle_client, args=(client_socket, port))
+        client_thread.start()
 
 
 if __name__ == '__main__':

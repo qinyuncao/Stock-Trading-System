@@ -114,16 +114,20 @@ def post_request():
 
 def health_check():
     while True:
-        s = socket.socket()
-        s.connect((os.getenv("PG_HostO", "127.0.0.1"), leader_port))
-        health_check_msg = 'healthCheck'
-        s.send(health_check_msg.encode())
-        health_response = s.recv(1024).decode('utf-8')
-        print(health_response)
-        if health_response != 'alive ' + str(leader_port):
-            leader_election()
-
-        time.sleep(4)
+        try:
+            s = socket.socket()
+            s.connect((os.getenv("PG_HostO", "127.0.0.1"), leader_port))
+            health_check_msg = 'healthCheck'
+            s.send(health_check_msg.encode())
+            health_response = s.recv(1024).decode('utf-8')
+            print(health_response)
+            if health_response != 'alive ' + str(leader_port):
+                leader_election()
+            time.sleep(2)
+        except:
+            # server has crashed or network error occurred
+            print('Server has crashed or network error occurred')
+            break
 
 
 def leader_election():
