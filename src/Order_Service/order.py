@@ -1,7 +1,7 @@
 import socket
 import json
 from threading import Lock, Thread
-
+import shutil
 from dataSettings import *
 import os
 
@@ -65,7 +65,7 @@ def trade(c, msg, leader_port):
             # write to leader's own database file
             file.write(order_history)
 
-        # 通知follower
+        # notify followers to maintain data consistency
         notify_msg = 'notify {order_his}'.format(order_his=order_history)
         print(notify_msg)
         for port in ports:
@@ -98,9 +98,9 @@ def handle_client(client_socket, port):
         order_history = request[7:]
         print(order_history)
         file = "order" + str(port) + ".txt"
-        with open(file, 'a') as file:
+        with open(file, 'a') as f:
             # write to follower's own database file
-            file.write(order_history)
+            f.write(order_history)
     return
 
 
@@ -117,6 +117,23 @@ def start_server(port):
         client_socket, address = server_socket.accept()
         client_thread = Thread(target=handle_client, args=(client_socket, port))
         client_thread.start()
+
+
+def syncronization():
+    # When order server starts, we synchronize their own database file with the latest one
+    # The latest database file contains the most data
+    file_list = ['order6000.txt', 'order6001.txt', 'order6002.txt']
+    lines_len = []
+    for file in file_list:
+        with open(file, 'r') as f:
+            lines = f.readlines()
+        lines_len.append(len(lines))
+    # Ge the index of the latest file
+    i = lines_len.index(max(lines_len))
+    for j in range(len(file_list)):
+        if j != i:
+            open(file_list[j], 'w').close()
+            shutil.copy(file_list[i], dest_file)
 
 
 if __name__ == '__main__':
