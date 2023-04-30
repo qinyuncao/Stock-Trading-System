@@ -3,7 +3,9 @@ import requests
 import random
 from threading import Thread
 import json
+import socket
 
+oAddr = ('127.0.0.1', 6000)
 
 class Client:
     def __init__(self, p, stocks, url, frontAddr):
@@ -26,8 +28,8 @@ class Client:
     # Test latency for lookup
     def lookupAndOrderLatency(self):
         start_time = time.time()
-        order_numeber = []
-        for i in range(1):
+        order_number = []
+        for i in range(100):
             r = self.session.get(url=self.url + self.stockName[random.randint(0, 3)]).json()
             reply = json.loads(r)
             stockName, quantity = reply['data']['stockName'], reply['data']['quantity']
@@ -46,7 +48,16 @@ class Client:
                 r2 = requests.post('http://%s:6060/order' % self.frontAddr,
                                    json=data, headers=headers).json()
                 reply2 = json.loads(r2)
-                print(reply2)
+                if reply2['data']['code'] == 200:
+                    order_number.append(reply2['data']["transaction number"])
+
+        s = socket.socket()
+        s.connect(oAddr)
+        order_msg = 'clientCheck {order_number}'.format(order_number=order_number)
+        s.send(order_msg.encode())
+        order_response = s.recv(1024).decode('utf-8')
+        print(order_response)
+        s.close()
         end_time = time.time()
         avg_time = (end_time - start_time) / 100
         print("average running time for look up is " + str(avg_time))
@@ -56,7 +67,7 @@ if __name__ == '__main__':
     FRONTADDRESS = "127.0.0.1"
     stocks = ["GameStart", "FishCo", "BoarCo", "MenhirCo"]
     url = 'http://%s:6060/lookUp?stockName=' % FRONTADDRESS
-    p = 0.5
+    p = 0.8
     client = Client(p, stocks, url, FRONTADDRESS)
     # client.run()
     start_time = time.time()

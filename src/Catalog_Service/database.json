@@ -1,19 +1,19 @@
 {
     "GameStart": {
         "price": 15.99,
-        "quantity": 100
+        "quantity": 761
     },
     "FishCo": {
         "price": 10.98,
-        "quantity": 110
+        "quantity": 715
     },
     "BoarCo": {
         "price": 21.77,
-        "quantity": 100
+        "quantity": 119
     },
     "MenhirCo": {
         "price": 6.99,
-        "quantity": 100
+        "quantity": 193
     },
     "Gogle": {
         "price": 23.91,

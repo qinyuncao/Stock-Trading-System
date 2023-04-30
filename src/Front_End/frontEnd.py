@@ -126,7 +126,6 @@ def health_check():
             health_check_msg = 'healthCheck'
             s.send(health_check_msg.encode())
             health_response = s.recv(1024).decode('utf-8')
-            print(health_response)
             if health_response != 'alive ' + str(leader_port):
                 leader_election()
             time.sleep(2)
@@ -159,6 +158,12 @@ def leader_election():
 
     alive_port.sort(reverse=True)
     leader_port = alive_port[0]
+    for p in order_Addr_list:
+        s = socket.socket()
+        s.connect((os.getenv("PG_HostO", "127.0.0.1"), p))
+        health_check_msg = f'leaderID :{leader_port}'
+        s.send(health_check_msg.encode())
+
 
 
 if __name__ == '__main__':

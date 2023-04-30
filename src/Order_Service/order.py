@@ -29,12 +29,11 @@ def trade(c, msg, leader_port):
     s.send(order_msg.encode())
     indicator = s.recv(1024).decode('utf-8')
     s.close()
-    print(indicator)
 
     if indicator == '400':
         payload = json.dumps(
             {
-                "error": {
+                "data": {
                     "code": 400,
                     "message": "trade is invalid"
                 }
@@ -52,14 +51,13 @@ def trade(c, msg, leader_port):
         payload = json.dumps(
             {
                 "data": {
-                    "transaction number": cur_counter,
+                    "code": 200,
+                    "transaction number": cur_counter
                 }
             }
         )
         reply_msg = '{code}/{payload}'.format(code=200, payload=payload)
         c.send(reply_msg.encode())
-
-
 
         order_history = str(cur_counter) + ' stockName:' + stockName + ",tradeType:" + tradeType + ",quantity:" + str(
             quantity) + '\n'
@@ -70,7 +68,6 @@ def trade(c, msg, leader_port):
 
         # notify followers to maintain data consistency
         notify_msg = 'notify {order_his}'.format(order_his=order_history)
-        print(notify_msg)
         for port in ports:
             if port != leader_port:
                 # connect with followers
@@ -93,17 +90,39 @@ def handle_client(client_socket, port):
         health_msg = 'alive {self_port}'.format(self_port=port)
         client_socket.send(health_msg.encode())
     elif action == 'leaderID':
-        # ------------follower需要干啥？------------ #
-        # all order services handle leader election result 'leaderID: {id}' from front end
         pass
     elif action == 'notify':
         # followers receives 'notify {order_history}' from leader
         order_history = request[7:]
-        print(order_history)
         file = "order" + str(port) + ".txt"
         with open(file, 'a') as f:
             # write to follower's own database file
             f.write(order_history)
+    elif action == 'clientCheck':
+        order_number = request[12:]
+        order_number = order_number[1:]
+        order_number = order_number[:1]
+        order_number_list = list(order_number.split(", "))
+
+        all_order_number_exist = []
+        for a in range(len(order_number_list)):
+            all_order_number_exist.append(0)
+
+        fileName = "order"+str(port)+".txt"
+        if os.path.exists(fileName):
+            with open(fileName, 'r') as file:
+                lines = file.readlines()
+                for x in range(len(order_number_list)):
+                    for line in lines:
+                        if line.split(' ')[0] == order_number_list[x]:
+                            all_order_number_exist[x] = 1
+        print(all_order_number_exist)
+        if sum(all_order_number_exist) == len(all_order_number_exist):
+            reply = "ok"
+            client_socket.send(reply.encode())
+        else:
+            reply = "missing one or more transaction"
+            client_socket.send(reply.encode())
     return
 
 
@@ -156,7 +175,6 @@ if __name__ == '__main__':
                         break
         else:
             counts[i] = 0
-        print(counts)
         server_thread = Thread(target=start_server, args=(port,))
         server_thread.start()
         server_threads.append(server_thread)
