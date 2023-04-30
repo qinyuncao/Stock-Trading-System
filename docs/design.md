@@ -25,16 +25,18 @@ If the stock is not in cache:
 
 
 
-### Connect with Order Server after a receiving POST request 需要改流程
+### Connect with Order Server after a receiving POST request
 In function `post_request`:
 Check its cache first to see if the stock is in cache. If so, update on cache.
-If the stock is not in cache:
 1. Send health checking message to leader order server to see if it's alive. If so, create a socket connecting to leader Order Server. If not, process leader election to have another leader order server, and then create a socket connecting to the new leader.
 2. Forward the `order` request to the leader.
 3. Repeat step 1 until it receives the response from leader.
 4. Send the response to Client.
 * If the trade is successful, the response contains `transaction_number` of the stock.
-* If it's invalid, the response should contain `error code` and `error message`.
+* If it's invalid, the response should contain `error code` and `error message`. Then we undo the action we did to cache.
+
+If the stock is not in cache:
+* Do not do anything to cache.
 
 
 ## Catalog server

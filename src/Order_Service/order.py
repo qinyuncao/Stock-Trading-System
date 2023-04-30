@@ -44,19 +44,22 @@ def trade(c, msg, leader_port):
         c.send(reply_msg.encode())
 
     elif indicator == '200':
+
+        i = ports.index(leader_port)
+        counts[i] = counts[i] + 1
+        cur_counter = counts[i]
+
         payload = json.dumps(
             {
                 "data": {
-                    "transaction number": quantity,
+                    "transaction number": cur_counter,
                 }
             }
         )
         reply_msg = '{code}/{payload}'.format(code=200, payload=payload)
         c.send(reply_msg.encode())
 
-        i = ports.index(leader_port)
-        counts[i] = counts[i] + 1
-        cur_counter = counts[i]
+
 
         order_history = str(cur_counter) + ' stockName:' + stockName + ",tradeType:" + tradeType + ",quantity:" + str(
             quantity) + '\n'
