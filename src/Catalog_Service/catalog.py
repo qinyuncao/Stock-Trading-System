@@ -14,12 +14,13 @@ class CatalogService:
     # Based on the request send by front end, check if the database have the stock. If yes, return it. If not,
     # return 404.
     def Lookup(self, c, request):
-        # request message from front end is 'Lookup {stock_name}'
+        # handle lookup request from front end 'Lookup {stock_name}' 
         stock_name = request.split()[1]
         lock.acquire()
         if stock_name in self.memory:
             info = self.memory[stock_name]
         else:
+            # If stock is not in database, return error code
             info = "404"
         lock.release()
         print(info)
@@ -34,9 +35,11 @@ class CatalogService:
                     }
                 }
             )
+            # send info to front end
             reply_msg = '{code}/{payload}'.format(code=200, payload=payload)
             c.send(reply_msg.encode('utf-8'))
         else:
+            # handle invalid lookup
             payload = json.dumps(
                 {
                     "error": {
@@ -57,6 +60,7 @@ class CatalogService:
         quantity = int(request.split(' ')[2])
         stockName = request.split(' ')[3]
 
+        # Modify quatity of order based on trade type
         if tradeType == 'sell':
             lock.acquire()
             with open('database.json', 'r+') as f:
@@ -71,17 +75,20 @@ class CatalogService:
             c.send(reply.encode())
 
         elif tradeType == 'buy':
-            # Check if the trade is valid
+            # We need to check if the quantity of the stock is sufficient for trading
             if self.memory[stockName]['quantity'] < quantity:
                 lock.acquire()
+                # If trade is invalid, send error code
                 reply = "400"
                 c.send(reply.encode())
                 lock.release()
 
             elif self.memory[stockName]['quantity'] >= quantity:
+                # If trade is valid, modify the quantity of the stock
                 lock.acquire()
                 with open('database.json', 'r+') as f:
                     data = json.load(f)
+                    # update its database
                     self.memory[stockName]['quantity'] -= quantity
                     data[stockName]['quantity'] = self.memory[stockName]['quantity']
                     f.seek(0)
