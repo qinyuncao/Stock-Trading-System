@@ -34,7 +34,7 @@ class Client:
     def tradeLatency(self):
         start_time = time.time()
         for i in range(100):
-            r = self.session.post('http://%s:6060/' % self.frontAddr,
+            r = self.session.post('http://%s:6060/order' % self.frontAddr,
                                   data={'stockName': "FishCo", 'quantity': 1, 'type': 'sell'})
         end_time = time.time()
         avg_time = (end_time - start_time) / 100
