@@ -83,22 +83,14 @@ In function `trade`:
 7. Notify followers.
 
 
-
-
 ## Client
 The client should be able to send get/post request from client to Front End server. It used requests to send in HTTP format. It will Lookup a random stock first. Then, it has probability p to send another order request in random amount 1-1000, and it will be 50% to buy and 50 % to sell. It will print what we got from the front end server in terminal.
 
 
-
-
 ## Work Distribution
 Front end service's flask API, and implementation of how three order replicas communicate with each other were mainly modified by Qinyun Cao.
-Caching, synchronization among three order replicas, and how leader notify followers are mainly designed by Junzhu Li.
+Caching, synchronization among three order replicas, and how leader notify followers were mainly designed by Junzhu Li.
 We worked on how to go through the whole process of health checking and leader election at the same time.
-
-
-
-
 
 
 
