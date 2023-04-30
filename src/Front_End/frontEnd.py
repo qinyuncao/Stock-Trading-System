@@ -11,10 +11,6 @@ app = Flask(__name__)
 fAddr = frontEndService_addr
 oAddr = orderService_addr
 cAddr = catalogService_addr
-order_ports = [6000, 6001, 6002]
-order_Addr_list = []
-for port in order_ports:
-    order_Addr_list.append(port)
 
 cSAddr = (os.getenv("PG_HostC", "127.0.0.1"), 7090)
 cache = SimpleCache(3)
@@ -27,7 +23,8 @@ def get_request():
     stockName = request.args.get('stockName')
 
     # check cache first
-    if cache.inCache(stockName):
+    if cache.inCache(stockName): # If stock is in cache
+        #send info in cache to client
         stock_in_cache = json.loads(cache.getStock(stockName))
         price, quantity = stock_in_cache['price'], stock_in_cache['quantity']
         print(price)
@@ -40,16 +37,17 @@ def get_request():
                 }
             }
         )
-
         payload = json.dumps(payload)
         return payload
-    else:
+    
+    else:  # If stock is not in cache
         # connect with catalog service
         s = socket.socket()
         s.connect(cSAddr)
         # forward the request to catalog service
         lookup_msg = 'Lookup {stock_name}'.format(stock_name=stockName)
         s.send(lookup_msg.encode())
+        # receive response from catalog service
         lookup_response = s.recv(1024).decode('utf-8')
         s.close()
 
@@ -68,9 +66,10 @@ def get_request():
                 }
             )
             print(reply)
-            cache.add(stockInCache)
+            cache.add(stockInCache) # update cache
             return reply
         else:
+            # handle unsuccessful lookup from catalog
             reply = json.dumps(res_msg)
             return reply
 
@@ -79,20 +78,23 @@ def get_request():
 def post_request():
     data = request.get_json()
     data = json.loads(data)
-
+    # retrieve info in request
     stockName = data['stockName']
     quantity = data['quantity']
     tradeType = data['type']
+    # First check if the trade can be made in cache
     if cache.inCache(stockName):
         if tradeType == "buy":
             cache.updateStock(stockName, quantity, False)
         else:
             cache.updateStock(stockName, quantity, True)
 
+    # Connect with leader Order server
     s = socket.socket()
     s.connect((os.getenv("PG_HostO", "127.0.0.1"), leader_port))
     order_msg = 'order {tradeType} {quantity} {stock_name}'.format(tradeType=tradeType, quantity=quantity,
                                                                    stock_name=stockName)
+    # Forward order request to leader
     s.send(order_msg.encode())
     order_response = s.recv(1024).decode('utf-8')
     s.close()
@@ -100,11 +102,14 @@ def post_request():
     status_code = order_response.split("/")[0]
     res_msg = order_response.split("/")[1]
     if status_code == "200":
+        # handle successful trades
         reply = json.dumps(res_msg)
         return reply
     else:
+        # handle unsuccessful trades
         reply = json.dumps(res_msg)
         if cache.inCache(stockName):
+            # Reverse action made in cache from the previous step if the stock is in cache
             if tradeType == "buy":
                 cache.updateStock(stockName, quantity, True)
             else:
@@ -113,6 +118,7 @@ def post_request():
 
 
 def health_check():
+    # We need to check if leader is alive repeatedly
     while True:
         try:
             s = socket.socket()

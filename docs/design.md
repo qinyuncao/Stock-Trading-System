@@ -23,8 +23,6 @@ If the stock is not in cache:
 * If it's invalid, the response should contain an `error code` and `error message`.
 
 
-
-
 ### Connect with Order Server after a receiving POST request
 In function `post_request`:
 Check its cache first to see if the stock is in cache. If so, update on cache.

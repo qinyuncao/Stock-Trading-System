@@ -28,8 +28,9 @@ class SimpleCache:
                 if item['stockName'] == stockName:
                     return json.dumps(item)
             return None
-
+        
     def updateStock(self, stockName, amount, type):
+        # Process trading update in cache
         with lock:
             for item in self.cache:
                 if item['stockName'] == stockName:
