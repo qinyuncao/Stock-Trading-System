@@ -16,7 +16,7 @@ order_Addr_list = []
 for port in order_ports:
     order_Addr_list.append(port)
 
-cSAddr = (os.getenv("PG_HostC", "3.88.183.128"), 7090)
+cSAddr = (os.getenv("PG_HostC", "127.0.0.1"), 7090)
 cache = SimpleCache(3)
 leader_port = 6000
 
@@ -90,7 +90,7 @@ def post_request():
             cache.updateStock(stockName, quantity, True)
 
     s = socket.socket()
-    s.connect((os.getenv("PG_HostO", "3.88.183.128"), leader_port))
+    s.connect((os.getenv("PG_HostO", "127.0.0.1"), leader_port))
     order_msg = 'order {tradeType} {quantity} {stock_name}'.format(tradeType=tradeType, quantity=quantity,
                                                                    stock_name=stockName)
     s.send(order_msg.encode())
@@ -116,7 +116,7 @@ def health_check():
     while True:
         try:
             s = socket.socket()
-            s.connect((os.getenv("PG_HostO", "3.88.183.128"), leader_port))
+            s.connect((os.getenv("PG_HostO", "127.0.0.1"), leader_port))
             health_check_msg = 'healthCheck'
             s.send(health_check_msg.encode())
             health_response = s.recv(1024).decode('utf-8')
@@ -139,7 +139,7 @@ def leader_election():
         s = socket.socket()
         s.settimeout(5)
         try:
-            s.connect((os.getenv("PG_HostO", "3.88.183.128"), p))
+            s.connect((os.getenv("PG_HostO", "127.0.0.1"), p))
             s.send(health_check_msg.encode())
             health_response = s.recv(1024).decode('utf-8')
             status = health_response.split(" ")[0]
