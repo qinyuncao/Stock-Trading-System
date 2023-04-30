@@ -9,6 +9,5 @@ Content-Length: {content_length}
 frontEndService_addr = '0.0.0.0'
 catalogService_addr = '0.0.0.0'
 orderService_addr = '0.0.0.0'
-catalogSender_addr = '127.0.0.1'
-orderSender_addr = '127.0.0.1'
-order_port_list = [1010,2020,3030,4040]
+catalogSender_addr = '3.88.183.128'
+orderSender_addr = '3.88.183.128'

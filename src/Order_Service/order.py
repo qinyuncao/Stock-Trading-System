@@ -7,7 +7,7 @@ import os
 
 cAddr = catalogService_addr
 oAddr = orderService_addr
-cSAddr = (os.getenv("PG_HostC", "127.0.0.1"), 7090)
+cSAddr = (os.getenv("PG_HostC", "3.88.183.128"), 7090)
 lock = Lock()
 # count1 = -1
 # count2 = -1
