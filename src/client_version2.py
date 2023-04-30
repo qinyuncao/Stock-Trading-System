@@ -29,9 +29,11 @@ class Client:
     def lookupAndOrderLatency(self):
         start_time = time.time()
         order_number = []
-        for i in range(100):
+        for i in range(10):
             r = self.session.get(url=self.url + self.stockName[random.randint(0, 3)]).json()
+            print(r)
             reply = json.loads(r)
+
             stockName, quantity = reply['data']['stockName'], reply['data']['quantity']
 
             # If stock has more than 0 and probability is less than p
@@ -47,20 +49,21 @@ class Client:
                 data = json.dumps({'stockName': stockName, 'quantity': randomBuy, 'type': tradeType})
                 r2 = requests.post('http://%s:6060/order' % self.frontAddr,
                                    json=data, headers=headers).json()
+                print(r2)
                 reply2 = json.loads(r2)
                 if reply2['data']['code'] == 200:
                     order_number.append(reply2['data']["transaction number"])
 
         s = socket.socket()
         s.connect(oAddr)
+        print(order_number)
         order_msg = 'clientCheck {order_number}'.format(order_number=order_number)
         s.send(order_msg.encode())
         order_response = s.recv(1024).decode('utf-8')
         print(order_response)
         s.close()
         end_time = time.time()
-        avg_time = (end_time - start_time) / 100
-        print("average running time for look up is " + str(avg_time))
+        avg_time = end_time - start_time
 
 
 if __name__ == '__main__':
@@ -79,4 +82,3 @@ if __name__ == '__main__':
 
     end_time = time.time()
     avg_time = (end_time - start_time)
-    print("time for look up is " + str(avg_time))
