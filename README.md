@@ -1,4 +1,4 @@
-# Stock-Trading-System
+# Stock Trading System
 
 This project was done in UMass Amherst by Qinyun Cao and Junzhu Li (in no particular order).
 
