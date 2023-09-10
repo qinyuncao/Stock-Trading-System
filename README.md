@@ -5,7 +5,15 @@ This project was done in UMass Amherst by Qinyun Cao and Junzhu Li (in no partic
 ## Lab 1
 
 ## Lab 2
+This paper outlines Lab 2, titled "Asterix and the Microservice Stock Bazaar," which focuses on designing and implementing a microservices-based stock trading application with a two-tier architecture. The goals of the lab include learning distributed system design, virtualization, web application interfaces, and modern technology implementation. It emphasizes the development of a front-end service, a catalog service, and an order service to handle stock trading operations.
 
+In Part 1, the paper discusses the implementation details of the microservices, including the front-end service responsible for stock lookup and trade requests, the catalog service for managing stock data, and the order service for processing trading orders. It emphasizes the importance of concurrency handling and describes the communication mechanisms between these services.
+
+Part 2 discusses containerizing the application using Docker and Docker Compose, ensuring that the microservices can be easily deployed and scaled in a distributed environment. It highlights the need to persist data and handle network configurations when using containers.
+
+Finally, Part 3 addresses testing and performance evaluation. It suggests creating test cases to validate the functionality and error handling of the application. Additionally, it proposes performance testing with varying client loads and requests, focusing on latency measurements and discussing the impact of Docker containers on performance.
+
+In summary, Lab 2 involves designing and implementing a microservices-based stock trading application, containerizing it with Docker, and conducting testing and performance evaluation to ensure functionality and efficiency.
 ## Lab 3
 This paper describes a lab project focused on enhancing the stock trading application by implementing caching, replication, and fault tolerance mechanisms. The application comprises three microservices: front-end, catalog, and order services. Part 1 introduces caching to reduce stock query request latency, with cache consistency ensured through a server-push technique. Part 2 discusses replication for the order service, aiming to maintain data consistency and fault tolerance with a leader-follower architecture. Finally, Part 3 deals with handling crash failures and synchronization of replicas, while Part 4 entails testing and evaluation, including deployment on AWS and latency measurement for different request types.
 
