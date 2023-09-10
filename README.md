@@ -1,6 +1,6 @@
 # Stock Trading System
 
-This project was done in UMass Amherst by Qinyun Cao and Junzhu Li (in no particular order).
+This project was done in CompSci 677 - UMass Amherst by Qinyun Cao and Junzhu Li (in no particular order).
 
 It provides an in-depth examination of the principles of distributed systems and advanced concepts in operating systems, covering client-server programming, the gRPC framework, multiple microservices architecture, distributed scheduling, HTTP frameworks, REST APIs, virtualization, cloud computing, Docker, caching, AWS Cloud, etc.
 
