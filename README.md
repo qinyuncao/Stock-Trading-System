@@ -3,7 +3,7 @@
 This project was done in UMass Amherst by Qinyun Cao and Junzhu Li (in no particular order).
 
 ## Lab 1
-
+This lab consists of three parts aimed at teaching students various aspects of designing distributed client-server applications. In Part 1, students are tasked with creating a thread pool and implementing a socket-based client-server application for online stock trading. The server responds to lookup queries for stock prices, demonstrating the inner workings of thread pools. Part 2 shifts to gRPC and built-in thread pools, with the server offering three gRPC calls for stock lookup, trading, and price updates. Students are encouraged to handle synchronization and error handling, reflecting modern distributed application design. In Part 3, students evaluate their implementations' performance by conducting load tests, varying the number of clients, and measuring response times for lookup and trade requests, aiming to gain insights into the efficiency of different design choices and the impact of load on response times.
 ## Lab 2
 This paper outlines Lab 2, titled "Asterix and the Microservice Stock Bazaar," which focuses on designing and implementing a microservices-based stock trading application with a two-tier architecture. The goals of the lab include learning distributed system design, virtualization, web application interfaces, and modern technology implementation. It emphasizes the development of a front-end service, a catalog service, and an order service to handle stock trading operations.
 
