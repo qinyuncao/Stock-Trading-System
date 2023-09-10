@@ -1,0 +1,30 @@
+run(y/n):y
+{'data': {'stockName': 'MenhirCo', 'price': 6.99, 'quantity': 100}}
+{"error": {"code": 400, "message": "trade is invalid"}}
+run(y/n):y
+{'data': {'stockName': 'GameStart', 'price': 15.99, 'quantity': 5}}
+run(y/n):y
+{'data': {'stockName': 'GameStart', 'price': 15.99, 'quantity': 5}}
+run(y/n):y
+{'data': {'stockName': 'FishCo', 'price': 10.98, 'quantity': 100}}
+run(y/n):y
+{'data': {'stockName': 'GameStart', 'price': 15.99, 'quantity': 5}}
+{"data": {"transaction number": "506"}}
+run(y/n):y
+{'data': {'stockName': 'MenhirCo', 'price': 6.99, 'quantity': 100}}
+{"error": {"code": 400, "message": "trade is invalid"}}
+run(y/n):y
+{'data': {'stockName': 'MenhirCo', 'price': 6.99, 'quantity': 100}}
+run(y/n):y
+{'data': {'stockName': 'MenhirCo', 'price': 6.99, 'quantity': 100}}
+run(y/n):y
+{'data': {'stockName': 'BoarCo', 'price': 21.77, 'quantity': 100}}
+run(y/n):y
+{'data': {'stockName': 'MenhirCo', 'price': 6.99, 'quantity': 100}}
+{"data": {"transaction number": "42"}}
+run(y/n):y
+{'data': {'stockName': 'MenhirCo', 'price': 6.99, 'quantity': 58}}
+{"data": {"transaction number": "242"}}
+run(y/n):n
+Wrong Code!!!
+run(y/n):

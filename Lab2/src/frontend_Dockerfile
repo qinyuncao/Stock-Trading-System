@@ -1,0 +1,10 @@
+FROM python:3.8-alpine
+
+RUN pip install requests
+
+WORKDIR /src
+
+Copy /Front_End/frontEnd.py .
+Copy /Front_End/dataSettings.py .
+
+ENTRYPOINT ["python", "-u","frontEnd.py"]
