@@ -1,0 +1,29 @@
+GRPC:
+1 client:
+average time for lookup in 100 times is 0.0013160204887390137
+average time for trade in 100 times is 0.001104280948638916
+average time for update in 100 times is 0.001239180564880371
+2 client:
+average time for lookup in 100 times is 0.00132735
+average time for trade in 100 times is 0.00098865
+average time for update in 100 times is 0.00115485
+3 client:
+average time for lookup in 100 times is 0.0014554
+average time for trade in 100 times is 0.0010088936286513
+average time for update in 100 times is 0.00095466295878
+4 client:
+average time for lookup in 100 times is 0.0016104370352
+average time for trade in 100 times is 0.00098955869275
+average time for update in 100 times is 0.0010432511567325
+5 client:
+average time for lookup in 100 times is 0.0014887814502
+average time for trade in 100 times is 0.0009975409507568
+average time for update in 100 times is 0.0009785037040576
+
+
+Socket:
+1 client:0.19641770362854005
+2 client:0.20005544781684
+3 client:0.1805880626042
+4 client:0.1791045576333625
+5 client:0.1915017213821

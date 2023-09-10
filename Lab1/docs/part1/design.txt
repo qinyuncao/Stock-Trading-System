@@ -1,0 +1,12 @@
+references:
+https://docs.python.org/3/library/concurrent.futures.html#threadpoolexecutor
+
+Part 1 is mainly written by Qinyun Cao, with help of Junzhu Li in debugging and Qinyun Cao implement evaluation methods for part 3.
+
+Steps are shown as follows:
+
+- Implement a thread class and a threadpool class
+
+- Implement a socket server
+
+- Implement a socket client to make calls to the server.

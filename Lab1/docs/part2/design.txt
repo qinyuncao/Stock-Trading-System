@@ -1,0 +1,19 @@
+references:
+[1] https://grpc.io/docs/languages/python/quickstart/
+[2] https://www.velotio.com/engineering-blog/grpc-implementation-using-python
+
+Part 2 is mainly written by Junzhu Li, with help of Qinyun Cao in debugging and implementing evaluation methods for part 3. 
+It usees the framework shown on reference [2].
+
+Steps are shown as follows:
+
+- Implement a message structure for arguments and return values of calls.
+In the proto file, we created a collection of servives (Lookup, Trade and Update) called stockSystem.
+Then, we can generate pb2 and pb2_grpc files containing stubs.
+
+- Implement a gRPC server using a built-in thread pool.
+It takes requests from client as inputs through protobuf/proto file. As we are writing the server, we need to transform the request or result in the form shown in proto file.
+
+- Implement a gRPC client to make calls to the server.
+As above, we also need to translate the request in a standard format.
+
