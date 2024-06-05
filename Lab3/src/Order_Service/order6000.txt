@@ -1,0 +1,10 @@
+1 stockName:GameStart,tradeType:sell,quantity:970
+2 stockName:GameStart,tradeType:buy,quantity:631
+3 stockName:BoarCo,tradeType:buy,quantity:80
+4 stockName:GameStart,tradeType:buy,quantity:72
+5 stockName:GameStart,tradeType:buy,quantity:85
+6 stockName:FishCo,tradeType:buy,quantity:99
+7 stockName:MenhirCo,tradeType:sell,quantity:577
+8 stockName:MenhirCo,tradeType:buy,quantity:511
+9 stockName:MenhirCo,tradeType:sell,quantity:403
+10 stockName:GameStart,tradeType:buy,quantity:100

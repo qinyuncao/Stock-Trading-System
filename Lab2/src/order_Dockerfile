@@ -1,0 +1,11 @@
+FROM python:3.8-alpine
+
+RUN pip install requests
+
+WORKDIR /src
+
+Copy /Order_Service/order.py .
+Copy /Order_Service/order.txt .
+Copy /Order_Service/dataSettings.py .
+
+ENTRYPOINT ["python", "-u","order.py"]

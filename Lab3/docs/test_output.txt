@@ -1,0 +1,11 @@
+C:\Users\qinyu\AppData\Local\Programs\Python\Python311\python.exe "C:/Program Files/JetBrains/PyCharm Community Edition 2023.1/plugins/python-ce/helpers/pycharm/_jb_unittest_runner.py" --path C:\Users\qinyu\Documents\GitHub\spring23-lab-3-junzhu-qinyun\src\test\testcase.py
+Testing started at 17:19 ...
+Launching unittests with arguments python -m unittest C:\Users\qinyu\Documents\GitHub\spring23-lab-3-junzhu-qinyun\src\test\testcase.py in C:\Users\qinyu\Documents\GitHub\spring23-lab-3-junzhu-qinyun\src\test
+
+
+
+Ran 7 tests in 0.025s
+
+OK
+
+Process finished with exit code 0

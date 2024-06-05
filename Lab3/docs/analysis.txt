@@ -1,0 +1,5 @@
+Every time when the order server crash and restart, it'll synchronize its database file with other replicas .
+by copying the largest database file to its own database file
+
+Can the clients notice the failures? --Yes
+Do all the order service replicas end up with the same database file? -- Yes

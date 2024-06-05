@@ -1,0 +1,42 @@
+{
+    "GameStart": {
+        "price": 15.99,
+        "quantity": 182
+    },
+    "FishCo": {
+        "price": 10.98,
+        "quantity": 1
+    },
+    "BoarCo": {
+        "price": 21.77,
+        "quantity": 20
+    },
+    "MenhirCo": {
+        "price": 6.99,
+        "quantity": 569
+    },
+    "Gogle": {
+        "price": 23.91,
+        "quantity": 100
+    },
+    "Mata": {
+        "price": 21.28,
+        "quantity": 100
+    },
+    "Azon": {
+        "price": 45.22,
+        "quantity": 100
+    },
+    "Tela": {
+        "price": 449.32,
+        "quantity": 100
+    },
+    "FAANG": {
+        "price": 700.21,
+        "quantity": 100
+    },
+    "Appl": {
+        "price": 123.21,
+        "quantity": 100
+    }
+}

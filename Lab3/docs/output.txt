@@ -1,0 +1,111 @@
+C:\Users\qinyu\AppData\Local\Programs\Python\Python311\python.exe C:\Users\qinyu\Documents\GitHub\spring23-lab-3-junzhu-qinyun\src\client_version2.py
+{"data": {"stockName": "GameStart", "price": 15.99, "quantity": 100}}
+{"data": {"stockName": "FishCo", "price": 10.98, "quantity": 100}}
+{"data": {"stockName": "BoarCo", "price": 21.77, "quantity": 100}}
+{"data": {"stockName": "GameStart", "price": 15.99, "quantity": 100}}
+{"data": {"code": 200, "transaction number": 1}}
+{"data": {"stockName": "BoarCo", "price": 21.77, "quantity": 100}}
+{"data": {"code": 400, "message": "trade is invalid"}}
+{"data": {"stockName": "GameStart", "price": 15.99, "quantity": 1070}}
+{"data": {"code": 200, "transaction number": 2}}
+{"data": {"stockName": "BoarCo", "price": 21.77, "quantity": 100}}
+{"data": {"stockName": "GameStart", "price": 15.99, "quantity": 439}}
+{"data": {"stockName": "GameStart", "price": 15.99, "quantity": 439}}
+{"data": {"code": 400, "message": "trade is invalid"}}
+{"data": {"stockName": "BoarCo", "price": 21.77, "quantity": 100}}
+[1, 2]
+ok
+{"data": {"stockName": "BoarCo", "price": 21.77, "quantity": 100}}
+{"data": {"code": 400, "message": "trade is invalid"}}
+{"data": {"stockName": "MenhirCo", "price": 6.99, "quantity": 100}}
+{"data": {"code": 400, "message": "trade is invalid"}}
+{"data": {"stockName": "MenhirCo", "price": 6.99, "quantity": 100}}
+{"data": {"code": 400, "message": "trade is invalid"}}
+{"data": {"stockName": "BoarCo", "price": 21.77, "quantity": 100}}
+{"data": {"stockName": "MenhirCo", "price": 6.99, "quantity": 100}}
+{"data": {"stockName": "GameStart", "price": 15.99, "quantity": 439}}
+{"data": {"stockName": "BoarCo", "price": 21.77, "quantity": 100}}
+{"data": {"code": 200, "transaction number": 3}}
+{"data": {"stockName": "BoarCo", "price": 21.77, "quantity": 20}}
+{"data": {"code": 400, "message": "trade is invalid"}}
+{"data": {"stockName": "FishCo", "price": 10.98, "quantity": 100}}
+{"data": {"code": 400, "message": "trade is invalid"}}
+{"data": {"stockName": "MenhirCo", "price": 6.99, "quantity": 100}}
+{"data": {"code": 400, "message": "trade is invalid"}}
+[3]
+ok
+{"data": {"stockName": "GameStart", "price": 15.99, "quantity": 439}}
+{"data": {"code": 200, "transaction number": 4}}
+{"data": {"stockName": "FishCo", "price": 10.98, "quantity": 100}}
+{"data": {"code": 400, "message": "trade is invalid"}}
+{"data": {"stockName": "FishCo", "price": 10.98, "quantity": 100}}
+{"data": {"stockName": "MenhirCo", "price": 6.99, "quantity": 100}}
+{"data": {"stockName": "BoarCo", "price": 21.77, "quantity": 20}}
+{"data": {"code": 400, "message": "trade is invalid"}}
+{"data": {"stockName": "BoarCo", "price": 21.77, "quantity": 20}}
+{"data": {"code": 400, "message": "trade is invalid"}}
+{"data": {"stockName": "FishCo", "price": 10.98, "quantity": 100}}
+{"data": {"code": 400, "message": "trade is invalid"}}
+{"data": {"stockName": "MenhirCo", "price": 6.99, "quantity": 100}}
+{"data": {"code": 400, "message": "trade is invalid"}}
+{"data": {"stockName": "BoarCo", "price": 21.77, "quantity": 20}}
+{"data": {"code": 400, "message": "trade is invalid"}}
+{"data": {"stockName": "GameStart", "price": 15.99, "quantity": 367}}
+{"data": {"code": 400, "message": "trade is invalid"}}
+[4]
+ok
+{"data": {"stockName": "GameStart", "price": 15.99, "quantity": 367}}
+{"data": {"code": 200, "transaction number": 5}}
+{"data": {"stockName": "MenhirCo", "price": 6.99, "quantity": 100}}
+{"data": {"stockName": "FishCo", "price": 10.98, "quantity": 100}}
+{"data": {"code": 200, "transaction number": 6}}
+{"data": {"stockName": "FishCo", "price": 10.98, "quantity": 1}}
+{"data": {"code": 400, "message": "trade is invalid"}}
+{"data": {"stockName": "MenhirCo", "price": 6.99, "quantity": 100}}
+{"data": {"code": 200, "transaction number": 7}}
+{"data": {"stockName": "MenhirCo", "price": 6.99, "quantity": 677}}
+{"data": {"code": 200, "transaction number": 8}}
+{"data": {"stockName": "GameStart", "price": 15.99, "quantity": 282}}
+{"data": {"stockName": "MenhirCo", "price": 6.99, "quantity": 166}}
+{"data": {"code": 200, "transaction number": 9}}
+{"data": {"stockName": "FishCo", "price": 10.98, "quantity": 1}}
+{"data": {"stockName": "GameStart", "price": 15.99, "quantity": 282}}
+{"data": {"code": 400, "message": "trade is invalid"}}
+[5, 6, 7, 8, 9]
+ok
+{"data": {"stockName": "FishCo", "price": 10.98, "quantity": 1}}
+{"data": {"stockName": "BoarCo", "price": 21.77, "quantity": 20}}
+{"data": {"code": 400, "message": "trade is invalid"}}
+{"data": {"stockName": "BoarCo", "price": 21.77, "quantity": 20}}
+{"data": {"code": 400, "message": "trade is invalid"}}
+{"data": {"stockName": "GameStart", "price": 15.99, "quantity": 282}}
+{"data": {"stockName": "BoarCo", "price": 21.77, "quantity": 20}}
+{"data": {"code": 400, "message": "trade is invalid"}}
+{"data": {"stockName": "FishCo", "price": 10.98, "quantity": 1}}
+{"data": {"code": 400, "message": "trade is invalid"}}
+{"data": {"stockName": "GameStart", "price": 15.99, "quantity": 282}}
+{"data": {"code": 200, "transaction number": 10}}
+{"data": {"stockName": "BoarCo", "price": 21.77, "quantity": 20}}
+{"data": {"code": 400, "message": "trade is invalid"}}
+{"data": {"stockName": "GameStart", "price": 15.99, "quantity": 182}}
+{"data": {"code": 400, "message": "trade is invalid"}}
+{"data": {"stockName": "BoarCo", "price": 21.77, "quantity": 20}}
+{"data": {"code": 400, "message": "trade is invalid"}}
+[10]
+ok
+
+Process finished with exit code 0
+
+Order.txt:
+1 stockName:GameStart,tradeType:sell,quantity:970
+2 stockName:GameStart,tradeType:buy,quantity:631
+3 stockName:BoarCo,tradeType:buy,quantity:80
+4 stockName:GameStart,tradeType:buy,quantity:72
+5 stockName:GameStart,tradeType:buy,quantity:85
+6 stockName:FishCo,tradeType:buy,quantity:99
+7 stockName:MenhirCo,tradeType:sell,quantity:577
+8 stockName:MenhirCo,tradeType:buy,quantity:511
+9 stockName:MenhirCo,tradeType:sell,quantity:403
+10 stockName:GameStart,tradeType:buy,quantity:100
+
+

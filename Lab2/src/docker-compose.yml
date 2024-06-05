@@ -1,0 +1,34 @@
+version: "3.9"
+services:
+  catalog:
+    build:
+      dockerfile: catalog_Dockerfile
+    image: catalog
+    volumes:
+      - ../src/Catalog_Service:/src
+    ports:
+      - "7090:7090"
+
+
+  order:
+    build:
+      dockerfile: order_Dockerfile
+    image: order
+    volumes:
+      - ../src/Order_Service:/src
+    ports:
+      - "9090:9090"
+    environment:
+      PG_HostC: catalog
+
+  frontend:
+    build:
+      dockerfile: frontend_Dockerfile
+    image: frontend
+    volumes:
+      - ../src/Front_End:/src
+    ports:
+      - "6060:6060"
+    environment:
+      PG_HostC: catalog
+      PG_HostO: order
